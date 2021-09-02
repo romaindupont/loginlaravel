@@ -23,6 +23,9 @@ Route::post('/register', [AuthController::class, 'store']);
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/custom-login', [AuthController::class, 'sessionStart'])->name('login.custom');
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
-Route::get('/changer', [AuthController::class, 'edit'])->middleware('auth');
-Route::post('/change', [AuthController::class, 'update'])->middleware('auth');
+Route::get('/user', [AuthController::class, 'show'])->middleware('auth')->name('show');
+Route::get('/{id}/edit', [AuthController::class, 'edit'])->middleware('auth')->name('edit');
+Route::put('/user/{id}', [AuthController::class, 'update'])->middleware('auth')->name('update');
 Route::get('/dashboard', [AuthController::class, 'dashboard'])->middleware('auth')->name('dashboard');
+
+

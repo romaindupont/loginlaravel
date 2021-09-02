@@ -3,14 +3,14 @@
 
 <h1>Mise à jour informations</h1>
 
-<form method="post" action="/change">
+<form method="post" action="{{ route('update', $user->id) }}">
+@method('PUT')
 @csrf
-{{ method_field('PUT') }}
     <label>name
-        <input type="name" name="name" value="{{ $name }}">
+        <input type="name" name="name" value="{{ $user->name }}">
     </label>
     <label>email
-        <input type="email" name="email" value="{{ $email }}">
+        <input type="email" name="email" value="{{ $user->email }}">
     </label>
     <label>password
         <input type="password" name="password">

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>React Form</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -22,21 +22,9 @@
     </head>
 
     <body class="antialiased">
-        <header>
-        <nav>
-            @guest
-            <li><a href="{{ url('') }}">Home</a></li>
-            <li><a href="{{ url('/register') }}">Inscription</a></li>
-            @else
-            <li><a href="{{ url('/dashboard') }}">Home</a></li>
-            <li><a href="{{ url('/user') }}">Change Information</a></li>
-            <li><a href="{{ url('/logout') }}">Logout</a></li>
-            @endguest
-        </nav>
-        </header>
         <div id="example">
         </div>
-       @yield('content')
+
        <script src="{{ asset('js/app.js') }}" defer></script>
     </body>
 </html>

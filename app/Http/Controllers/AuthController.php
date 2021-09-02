@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\View;
+Use Redirect;
 
 class AuthController extends Controller
 {
@@ -52,12 +53,20 @@ class AuthController extends Controller
                 }
             }
             else {
-                var_dump('Your password is not ok');
+               return Redirect::back()->withErrors(
+                [
+                    'password' => 'Not the good password'
+                ]
+                );
             }
 
         }
         else {
-            var_dump('user do not exist');
+            return Redirect::back()->withErrors(
+                [
+                    'name' => 'Your have no account, please create one in Inscription link'
+                ]
+                );
         }
 
     }
@@ -76,23 +85,29 @@ class AuthController extends Controller
 
         return redirect("login")->withSuccess('You are not allowed to access');
     }
-
-    public function edit(Request $request)
+    public function show()
     {
         $user = Auth::user();
-        return view('changeInformation')->with('name', $user->name)->with('email', $user->email);
+        return view('changeInformation',compact('user'));
     }
-    public function update(Request $request, User $user)
+    public function edit($id)
     {
-        $request->validate([
+        $user = User::findOrFail($id);
+        return view('changeInformation', compact('user'));
+    }
+    public function update(Request $request, $id)
+    {
+        $user = $request->validate([
             'name' => 'required|string',
             'email' => 'required|email',
             'password' => 'required|confirmed|min:6'
         ]);
-       /*  $user = Auth::user(); */
-    /*     View::make('changeInformation')->with('name', $user->name = $request->name); */
-        var_dump($user->name = $request->name);
-        /* $user->update($request->all()); */
+        User::whereId($id)->update([
+            'name' => $user['name'],
+            'email' => $user['email'],
+            'password' => Hash::make($user['password'])
+        ]);
+
 
         return redirect()->route('dashboard')
             ->with('success','User updated successfully');

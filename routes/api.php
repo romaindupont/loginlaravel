@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AuthApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,14 +20,14 @@ use App\Http\Controllers\AuthController;
 }); */
 Route::get('/', function () {
     return view('start');
-});
+})->name('home');
 
-Route::get('/register', [AuthController::class, 'create'])->name('subscribe');
-Route::post('/register', [AuthController::class, 'store']);
-Route::get('/login', [AuthController::class, 'login'])->name('login');
-Route::post('/custom-login', [AuthController::class, 'sessionStart'])->name('login.custom');
-Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
-Route::get('/user', [AuthController::class, 'show'])->middleware('auth')->name('show');
-Route::get('/{id}/edit', [AuthController::class, 'edit'])->middleware('auth')->name('edit');
-Route::put('/user/{id}', [AuthController::class, 'update'])->middleware('auth')->name('update');
-Route::get('/dashboard', [AuthController::class, 'dashboard'])->middleware('auth')->name('dashboard');
+Route::get('/register', [AuthApiController::class, 'create'])->name('subscribe');
+Route::post('/register', [AuthApiController::class, 'store']);
+Route::get('/login', [AuthApiController::class, 'login'])->name('login');
+Route::post('/custom-login', [AuthApiController::class, 'sessionStart'])->name('login.custom');
+Route::get('/logout', [AuthApiController::class, 'logout'])->middleware('auth');
+Route::get('/user', [AuthApiController::class, 'show'])->middleware('auth')->name('show');
+Route::get('/{id}/edit', [AuthApiController::class, 'edit'])->middleware('auth')->name('edit');
+Route::put('/user/{id}', [AuthApiController::class, 'update'])->middleware('auth')->name('update');
+Route::get('/dashboard', [AuthApiController::class, 'dashboard'])->middleware('auth')->name('dashboard');

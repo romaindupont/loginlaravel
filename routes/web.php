@@ -15,8 +15,8 @@ use App\Http\Controllers\AuthController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('start');
+})->name('home');
 
 Route::get('/register', [AuthController::class, 'create'])->name('subscribe');
 Route::post('/register', [AuthController::class, 'store']);

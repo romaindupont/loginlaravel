@@ -34,9 +34,6 @@
             @endguest
         </nav>
         </header>
-        <div id="example">
-        </div>
        @yield('content')
-       <script src="{{ asset('js/app.js') }}" defer></script>
     </body>
 </html>

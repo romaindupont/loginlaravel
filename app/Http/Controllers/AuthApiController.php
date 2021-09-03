@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\View;
+use Laravel\Passport\TokenRepository;
 Use Redirect;
 
 class AuthApiController extends Controller
@@ -65,12 +66,12 @@ class AuthApiController extends Controller
         }
 
     }
-    public function logout()
+    public function logout(Request $request)
     {
-        Auth::logout();
-
-        return redirect('login');
-    }
+        $tokenRepository = app(TokenRepository::class);
+        $tokenRepository->revokeAccessToken('myToken');
+        return response(['message' => 'You have been successfully logged out.'], 200);
+            }
     public function dashboard()
     {
         if(Auth::check()){
@@ -97,14 +98,19 @@ class AuthApiController extends Controller
             'email' => 'required|email',
             'password' => 'required|confirmed|min:6'
         ]);
-        User::whereId($id)->update([
-            'name' => $user['name'],
-            'email' => $user['email'],
-            'password' => Hash::make($user['password'])
-        ]);
+        if ($user) {
+            User::whereId($id)->update([
+                'name' => $user['name'],
+                'email' => $user['email'],
+                'password' => Hash::make($user['password'])
+            ]);
+            $response = ["message" => "Update ok"];
+            return response($response, 204);
+        }
+        else {
+            $response = ["message" => "Not OK"];
+            return response($response, 400);
+        }
 
-
-        return redirect()->route('dashboard')
-            ->with('success','User updated successfully');
     }
 }

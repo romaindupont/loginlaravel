@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="26.4582mm" height="26.4582mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 2646 2646"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+    .str0 {stroke:#2B2A29;stroke-width:20}
+    .fil0 {fill:none}
+    .fil1 {fill:#2B2A29}
+  </style>
+ </defs>
+ <g id="Plan_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_1618628408560">
+   <ellipse class="fil0 str0 eye" cx="1244" cy="1019" rx="622" ry="265"/>
+   <ellipse class="fil0 str0 blind" cx="1230" cy="1019" rx="318" ry="258"/>
+   <ellipse class="fil1 str0 black" cx="1244" cy="1019" rx="119" ry="106"/>
+  </g>
+ </g>
+</svg>

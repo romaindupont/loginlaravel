@@ -20,7 +20,7 @@ class AuthApiController extends Controller
         $dataUser = $request->validate([
             'name' => 'required|string',
             'email' => 'required|email|unique:users',
-            'password' => 'required|confirmed|min:6',
+            'password' => 'required|confirmed|min:8',
         ]);
 
         $dataUser = $request->all();
@@ -30,7 +30,7 @@ class AuthApiController extends Controller
             'email' => $dataUser['email'],
             'password' => Hash::make($dataUser['password']),
         ]);
-        return redirect("/")->withSuccess('You have signed-in');
+        return response(['message' => 'Inscription valide'], 204);
     }
     public function login()
     {

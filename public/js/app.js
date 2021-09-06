@@ -1903,6 +1903,79 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/create-react-app-start/src/Utils/passwordTest.js":
+/*!***********************************************************************!*\
+  !*** ./resources/js/create-react-app-start/src/Utils/passwordTest.js ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PasswordTest": () => (/* binding */ PasswordTest)
+/* harmony export */ });
+function PasswordTest(myValue) {
+  var regex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+  var psdId = document.getElementById('password');
+  var psdError = document.getElementById('errorPassword');
+
+  if (regex.test(myValue)) {
+    psdId.style.color = "green";
+    psdError.textContent = "Mot de passe valide";
+  } else {
+    psdId.style.color = "red";
+    psdError.textContent = "Mot de passe invalide";
+  }
+}
+;
+
+/***/ }),
+
+/***/ "./resources/js/create-react-app-start/src/Utils/svgAction.js":
+/*!********************************************************************!*\
+  !*** ./resources/js/create-react-app-start/src/Utils/svgAction.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "focusSvg": () => (/* binding */ focusSvg),
+/* harmony export */   "blurSvg": () => (/* binding */ blurSvg)
+/* harmony export */ });
+function focusSvg() {
+  var eye = document.querySelectorAll('.eye');
+  var blind = document.querySelectorAll('.blind');
+  var black = document.querySelectorAll('.black');
+  eye.forEach(function (eyes) {
+    return eyes.setAttribute('ry', '10');
+  });
+  blind.forEach(function (blinds) {
+    return blinds.setAttribute('ry', '0');
+  });
+  black.forEach(function (blacks) {
+    return blacks.setAttribute('ry', '1');
+  });
+}
+;
+function blurSvg() {
+  var eye = document.querySelectorAll('.eye');
+  var blind = document.querySelectorAll('.blind');
+  var black = document.querySelectorAll('.black');
+  eye.forEach(function (eyes) {
+    return eyes.setAttribute('ry', '265');
+  });
+  blind.forEach(function (blinds) {
+    return blinds.setAttribute('ry', '258');
+  });
+  black.forEach(function (blacks) {
+    return blacks.setAttribute('ry', '106');
+  });
+}
+;
+
+/***/ }),
+
 /***/ "./resources/js/create-react-app-start/src/actions/index.js":
 /*!******************************************************************!*\
   !*** ./resources/js/create-react-app-start/src/actions/index.js ***!
@@ -1925,7 +1998,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "CHANGE_VALUE": () => (/* binding */ CHANGE_VALUE),
 /* harmony export */   "changeValue": () => (/* binding */ changeValue),
 /* harmony export */   "ERROR_MESSAGE": () => (/* binding */ ERROR_MESSAGE),
-/* harmony export */   "errorMessage": () => (/* binding */ errorMessage)
+/* harmony export */   "errorMessage": () => (/* binding */ errorMessage),
+/* harmony export */   "NEW_USER": () => (/* binding */ NEW_USER),
+/* harmony export */   "newUser": () => (/* binding */ newUser)
 /* harmony export */ });
 var CONNEXION = 'CONNEXION';
 var connexion = function connexion(email, password) {
@@ -1979,6 +2054,15 @@ var errorMessage = function errorMessage(error) {
   return {
     type: ERROR_MESSAGE,
     error: error
+  };
+};
+var NEW_USER = 'NEW_USER';
+var newUser = function newUser(name, email, password) {
+  return {
+    type: NEW_USER,
+    name: name,
+    email: email,
+    password: password
   };
 };
 
@@ -2085,6 +2169,82 @@ var Dashboard = function Dashboard(_ref) {
 
 /***/ }),
 
+/***/ "./resources/js/create-react-app-start/src/components/Eyes/index.js":
+/*!**************************************************************************!*\
+  !*** ./resources/js/create-react-app-start/src/components/Eyes/index.js ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./resources/js/create-react-app-start/node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./resources/js/create-react-app-start/node_modules/react/jsx-runtime.js");
+
+
+
+
+
+var Eyes = function Eyes() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+      width: "26.4582mm",
+      height: "26.4582mm",
+      version: "1.1",
+      viewBox: "0 0 2646 2646",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("ellipse", {
+        className: "fil0 str0 eye",
+        cx: "1244",
+        cy: "1019",
+        rx: "622",
+        ry: "265"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("ellipse", {
+        className: "fil0 str0 blind",
+        cx: "1230",
+        cy: "1019",
+        rx: "318",
+        ry: "258"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("ellipse", {
+        className: "fil1 str0 black",
+        cx: "1244",
+        cy: "1019",
+        rx: "119",
+        ry: "106"
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+      width: "26.4582mm",
+      height: "26.4582mm",
+      version: "1.1",
+      viewBox: "0 0 2646 2646",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("ellipse", {
+        className: "fil0 str0 eye",
+        cx: "1244",
+        cy: "1019",
+        rx: "622",
+        ry: "265"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("ellipse", {
+        className: "fil0 str0 blind",
+        cx: "1230",
+        cy: "1019",
+        rx: "318",
+        ry: "258"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("ellipse", {
+        className: "fil1 str0 black",
+        cx: "1244",
+        cy: "1019",
+        rx: "119",
+        ry: "106"
+      })]
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Eyes);
+
+/***/ }),
+
 /***/ "./resources/js/create-react-app-start/src/components/LoginForm/index.js":
 /*!*******************************************************************************!*\
   !*** ./resources/js/create-react-app-start/src/components/LoginForm/index.js ***!
@@ -2098,7 +2258,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./resources/js/create-react-app-start/node_modules/react/index.js");
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./resources/js/create-react-app-start/src/components/LoginForm/style.scss");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./resources/js/create-react-app-start/node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Eyes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Eyes */ "./resources/js/create-react-app-start/src/components/Eyes/index.js");
+/* harmony import */ var _Utils_svgAction__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Utils/svgAction */ "./resources/js/create-react-app-start/src/Utils/svgAction.js");
+/* harmony import */ var _Utils_passwordTest__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Utils/passwordTest */ "./resources/js/create-react-app-start/src/Utils/passwordTest.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./resources/js/create-react-app-start/node_modules/react/jsx-runtime.js");
+
+
+
 
 
 
@@ -2114,30 +2280,50 @@ var LoginForm = function LoginForm(_ref) {
     connexion(e.target.email.value, e.target.password.value);
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("form", {
+  var focusPass = function focusPass() {
+    (0,_Utils_svgAction__WEBPACK_IMPORTED_MODULE_3__.focusSvg)();
+  };
+
+  var blurPass = function blurPass() {
+    (0,_Utils_svgAction__WEBPACK_IMPORTED_MODULE_3__.blurSvg)();
+  };
+
+  var passwordTestChange = function passwordTestChange(e) {
+    (0,_Utils_passwordTest__WEBPACK_IMPORTED_MODULE_4__.PasswordTest)(e.target.value);
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("form", {
       onSubmit: connect,
       className: "loginform",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("label", {
-        children: ["email", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Eyes__WEBPACK_IMPORTED_MODULE_2__.default, {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("label", {
+        children: ["email", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
           type: "email",
           name: "email",
           placeholder: "your email adress"
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("label", {
-        children: ["password", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("label", {
+        children: ["password", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
           type: "password",
           name: "password",
-          placeholder: "your password"
+          placeholder: "your password",
+          id: "password",
+          onFocus: focusPass,
+          onBlur: blurPass,
+          onChange: passwordTestChange
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+          id: "errorPassword"
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
         type: "submit",
         children: "Connexion"
       })]
-    }), error !== '' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    }), error !== '' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "error",
       children: error
-    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {})]
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {})]
   });
 };
 
@@ -2253,9 +2439,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./resources/js/create-react-app-start/node_modules/react/index.js");
-/* harmony import */ var _assets_img_yes_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../assets/img/yes.svg */ "./resources/js/create-react-app-start/src/assets/img/yes.svg");
+/* harmony import */ var _Eyes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Eyes */ "./resources/js/create-react-app-start/src/components/Eyes/index.js");
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./resources/js/create-react-app-start/src/components/ProfileForm/style.scss");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./resources/js/create-react-app-start/node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Utils_svgAction__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Utils/svgAction */ "./resources/js/create-react-app-start/src/Utils/svgAction.js");
+/* harmony import */ var _Utils_passwordTest__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Utils/passwordTest */ "./resources/js/create-react-app-start/src/Utils/passwordTest.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./resources/js/create-react-app-start/node_modules/react/jsx-runtime.js");
+
+
 
 
 
@@ -2264,18 +2454,28 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ProfileForm = function ProfileForm(_ref) {
-  var id = _ref.id,
-      name = _ref.name,
+  var name = _ref.name,
       email = _ref.email,
       changeValue = _ref.changeValue,
       changeUserInformation = _ref.changeUserInformation,
-      isConnected = _ref.isConnected;
+      isConnected = _ref.isConnected,
+      newUser = _ref.newUser,
+      error = _ref.error;
 
   var connect = function connect(e) {
     e.preventDefault();
+    var error = document.getElementById('errorPassword');
 
-    if (e.target.password.value === e.target.password_confirmation.value) {
+    if (e.target.password.value === e.target.password_confirmation.value & error.textContent == "Mot de passe valide" & isConnected) {
       changeUserInformation(e.target.name.value, e.target.email.value, e.target.password.value);
+    }
+
+    if (e.target.password.value === e.target.password_confirmation.value & error.textContent == "Mot de passe valide" & !isConnected) {
+      newUser(e.target.name.value, e.target.email.value, e.target.password.value);
+    }
+
+    if (error.textContent == "Mot de passe invalide") {
+      console.error('Le mdp ne respecte pas les règles');
     } else {
       console.error('erreur de mot de passe');
     }
@@ -2287,124 +2487,68 @@ var ProfileForm = function ProfileForm(_ref) {
   };
 
   var focusPass = function focusPass() {
-    var eye = document.querySelectorAll('.eye');
-    var blind = document.querySelectorAll('.blind');
-    var black = document.querySelectorAll('.black');
-    eye.forEach(function (eyes) {
-      return eyes.setAttribute('ry', '10');
-    });
-    blind.forEach(function (blinds) {
-      return blinds.setAttribute('ry', '0');
-    });
-    black.forEach(function (blacks) {
-      return blacks.setAttribute('ry', '1');
-    });
+    (0,_Utils_svgAction__WEBPACK_IMPORTED_MODULE_3__.focusSvg)();
   };
 
   var blurPass = function blurPass() {
-    var eye = document.querySelectorAll('.eye');
-    var blind = document.querySelectorAll('.blind');
-    var black = document.querySelectorAll('.black');
-    eye.forEach(function (eyes) {
-      return eyes.setAttribute('ry', '265');
-    });
-    blind.forEach(function (blinds) {
-      return blinds.setAttribute('ry', '258');
-    });
-    black.forEach(function (blacks) {
-      return blacks.setAttribute('ry', '106');
-    });
+    (0,_Utils_svgAction__WEBPACK_IMPORTED_MODULE_3__.blurSvg)();
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
-    onSubmit: connect,
-    className: "loginform",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("svg", {
-        width: "26.4582mm",
-        height: "26.4582mm",
-        version: "1.1",
-        viewBox: "0 0 2646 2646",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("ellipse", {
-          className: "fil0 str0 eye",
-          cx: "1244",
-          cy: "1019",
-          rx: "622",
-          ry: "265"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("ellipse", {
-          className: "fil0 str0 blind",
-          cx: "1230",
-          cy: "1019",
-          rx: "318",
-          ry: "258"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("ellipse", {
-          className: "fil1 str0 black",
-          cx: "1244",
-          cy: "1019",
-          rx: "119",
-          ry: "106"
+  var passwordTestChange = function passwordTestChange(e) {
+    (0,_Utils_passwordTest__WEBPACK_IMPORTED_MODULE_4__.PasswordTest)(e.target.value);
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("form", {
+      onSubmit: connect,
+      className: "loginform",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Eyes__WEBPACK_IMPORTED_MODULE_1__.default, {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("label", {
+        children: ["name", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+          type: "text",
+          name: "name",
+          placeholder: "your name",
+          onChange: change,
+          value: name
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("svg", {
-        width: "26.4582mm",
-        height: "26.4582mm",
-        version: "1.1",
-        viewBox: "0 0 2646 2646",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("ellipse", {
-          className: "fil0 str0 eye",
-          cx: "1244",
-          cy: "1019",
-          rx: "622",
-          ry: "265"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("ellipse", {
-          className: "fil0 str0 blind",
-          cx: "1230",
-          cy: "1019",
-          rx: "318",
-          ry: "258"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("ellipse", {
-          className: "fil1 str0 black",
-          cx: "1244",
-          cy: "1019",
-          rx: "119",
-          ry: "106"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("label", {
+        children: ["email", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+          type: "email",
+          name: "email",
+          placeholder: "your email adress",
+          onChange: change,
+          value: email
         })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("label", {
+        children: ["password", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+          type: "password",
+          id: "password",
+          name: "password",
+          placeholder: "your password",
+          onFocus: focusPass,
+          onBlur: blurPass,
+          onChange: passwordTestChange
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("label", {
+        children: ["password_confirmation", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+          type: "password",
+          name: "password_confirmation",
+          placeholder: "your password_confirmation",
+          onFocus: focusPass,
+          onBlur: blurPass,
+          onChange: passwordTestChange
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+          id: "errorPassword"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+        type: "submit",
+        children: isConnected ? "Change" : "Registration"
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
-      children: ["name", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-        type: "text",
-        name: "name",
-        placeholder: "your name",
-        onChange: change,
-        value: name
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
-      children: ["email", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-        type: "email",
-        name: "email",
-        placeholder: "your email adress",
-        onChange: change,
-        value: email
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
-      children: ["password", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-        type: "password",
-        name: "password",
-        placeholder: "your password",
-        onFocus: focusPass,
-        onBlur: blurPass
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
-      children: ["password_confirmation", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-        type: "password",
-        name: "password_confirmation",
-        placeholder: "your password_confirmation",
-        onFocus: focusPass,
-        onBlur: blurPass
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-      type: "submit",
-      children: isConnected ? "Change" : "Registration"
-    })]
+    }), error !== '' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      className: "error",
+      children: error
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {})]
   });
 };
 
@@ -2430,8 +2574,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    isConnected: state.isConnected //...
-
+    isConnected: state.isConnected
   };
 };
 
@@ -2461,8 +2604,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     name: state.name,
     email: state.email,
     token: state.token,
-    user_id: state.user_id //...
-
+    user_id: state.user_id
   };
 };
 
@@ -2498,18 +2640,13 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
   return {
-    /*    changeValue: (newValue) => {
-        dispatch(changeValue(newValue, ownProps.name));
-      }, */
     connexion: function connexion(email, password) {
       dispatch((0,_actions__WEBPACK_IMPORTED_MODULE_2__.connexion)(email, password));
     }
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_components_LoginForm__WEBPACK_IMPORTED_MODULE_1__.default)); // si mapStateToProps ou mapDispatchToProps null alors
-// const mapStateToProps = null;
-// const mapDispatchToProps = {}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_components_LoginForm__WEBPACK_IMPORTED_MODULE_1__.default));
 
 /***/ }),
 
@@ -2533,8 +2670,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    isConnected: state.isConnected //...
-
+    isConnected: state.isConnected
   };
 };
 
@@ -2574,7 +2710,8 @@ var mapStateToProps = function mapStateToProps(state) {
     user_id: state.user_id,
     name: state.name,
     email: state.email,
-    isConnected: state.isConnected
+    isConnected: state.isConnected,
+    error: state.error
   };
 };
 
@@ -2585,6 +2722,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     changeUserInformation: function changeUserInformation(name, email, password) {
       dispatch((0,_actions__WEBPACK_IMPORTED_MODULE_2__.changeUserInformation)(name, email, password));
+    },
+    newUser: function newUser(email, name, password) {
+      dispatch((0,_actions__WEBPACK_IMPORTED_MODULE_2__.newUser)(email, name, password));
     }
   };
 };
@@ -2712,7 +2852,25 @@ var ajax = function ajax(store) {
             }).then(function (response) {
               console.log('ok');
             })["catch"](function (error) {
-              console.error(error);
+              store.dispatch((0,_actions__WEBPACK_IMPORTED_MODULE_1__.errorMessage)(error.response.data.message));
+            });
+            break;
+          }
+
+        case _actions__WEBPACK_IMPORTED_MODULE_1__.NEW_USER:
+          {
+            axios__WEBPACK_IMPORTED_MODULE_0___default().post('/register', {
+              name: action.name,
+              email: action.email,
+              password: action.password,
+              password_confirmation: action.password
+            }, {
+              baseURL: 'http://127.0.0.1:8000/api/'
+            }).then(function (response) {
+              localStorage.setItem('myToken', response.data.token);
+              window.location.href = '/';
+            })["catch"](function (error) {
+              store.dispatch((0,_actions__WEBPACK_IMPORTED_MODULE_1__.errorMessage)(error));
             });
             break;
           }
@@ -2746,21 +2904,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-// == Import : npm
-
-/* import { combineReducers } from 'redux';
-
-// == Import : local
-/* import mondeReducer from './monde'; */
-
-/*
-const rootReducer = combineReducers({
-  /* monde: mondeReducer, */
-
-/* }); */
-
-/* export default rootReducer;  */
-//reducer
 
 var initialState = {
   isConnected: false,
@@ -2854,7 +2997,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _middlewares__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../middlewares */ "./resources/js/create-react-app-start/src/middlewares/index.js");
 /* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../reducers */ "./resources/js/create-react-app-start/src/reducers/index.js");
 
- // == Import : local
 
 
 var composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || redux__WEBPACK_IMPORTED_MODULE_2__.compose;
@@ -7345,7 +7487,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".loginform {\n  display: flex;\n  flex-direction: column;\n  margin: 150px auto;\n  padding: 0 0 4rem;\n  border: 2px solid black;\n  border-radius: 20px;\n  box-shadow: -15px -10px 15px -4px black;\n}\n.loginform > div {\n  background: transparent;\n  width: 100%;\n  height: 50px;\n  border-radius: 20px 20px 0 0;\n  border-bottom: 1px solid black;\n  box-shadow: 0px 7px 10px 0px black;\n}\n\nlabel {\n  display: flex;\n  flex-direction: column;\n  margin: 1rem 1rem;\n  text-align: center;\n}\n\ninput {\n  border-bottom: 1px solid black;\n}\n\n.error {\n  text-align: center;\n  color: red;\n  font-weight: bold;\n}\n\nbutton {\n  height: 70px;\n  position: relative;\n  bottom: -63px;\n  border-radius: 0 0 20px 20px;\n  background: bisque;\n  cursor: pointer;\n}\nbutton:hover {\n  color: bisque;\n  font-weight: bold;\n  background: white;\n  box-shadow: 0px 0px 0px 6px bisque;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".loginform {\n  display: flex;\n  flex-direction: column;\n  margin: 150px auto;\n  padding: 0 0 4rem;\n  border: 2px solid black;\n  border-radius: 20px;\n  box-shadow: -15px -10px 15px -4px black;\n}\n.loginform > div {\n  background: transparent;\n  width: 100%;\n  height: 50px;\n  border-radius: 20px 20px 0 0;\n  border-bottom: 1px solid black;\n  box-shadow: 0px 7px 10px 0px black;\n  padding-top: 1rem;\n}\n\nlabel {\n  display: flex;\n  flex-direction: column;\n  margin: 1rem 1rem;\n  text-align: center;\n  position: relative;\n}\n\ninput {\n  border-bottom: 1px solid black;\n}\n\n.error {\n  text-align: center;\n  color: red;\n  font-weight: bold;\n}\n\nbutton {\n  height: 70px;\n  position: relative;\n  bottom: -63px;\n  border-radius: 0 0 20px 20px;\n  background: bisque;\n  cursor: pointer;\n}\nbutton:hover {\n  color: bisque;\n  font-weight: bold;\n  background: white;\n  box-shadow: 0px 0px 0px 6px bisque;\n}\n\ninput[type=password] {\n  color: red;\n}\n\n#errorPassword {\n  position: absolute;\n  bottom: -50px;\n  width: 175px;\n  font-size: 0.5rem;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -7497,21 +7639,6 @@ module.exports = function (cssWithMappingToString) {
 
   return list;
 };
-
-/***/ }),
-
-/***/ "./resources/js/create-react-app-start/src/assets/img/yes.svg":
-/*!********************************************************************!*\
-  !*** ./resources/js/create-react-app-start/src/assets/img/yes.svg ***!
-  \********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/yes.svg?b3ef4b1e85e01d9aad613594010f36b3");
 
 /***/ }),
 

@@ -1903,6 +1903,30 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/create-react-app-start/src/Utils/PasswordVisibility.js":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/create-react-app-start/src/Utils/PasswordVisibility.js ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PasswordVisibility": () => (/* binding */ PasswordVisibility)
+/* harmony export */ });
+function PasswordVisibility() {
+  var passwordInput = document.getElementById('password');
+
+  if (passwordInput.type === "password") {
+    passwordInput.type = 'text';
+  } else {
+    passwordInput.type = 'password';
+  }
+}
+;
+
+/***/ }),
+
 /***/ "./resources/js/create-react-app-start/src/Utils/passwordTest.js":
 /*!***********************************************************************!*\
   !*** ./resources/js/create-react-app-start/src/Utils/passwordTest.js ***!
@@ -2023,13 +2047,14 @@ var disconnect = function disconnect() {
   };
 };
 var SAVE_USER = 'SAVE_USER';
-var saveUser = function saveUser(name, email, token, user_id) {
+var saveUser = function saveUser(name, email, token, user_id, is_admin) {
   return {
     type: SAVE_USER,
     name: name,
     email: email,
     token: token,
-    user_id: user_id
+    user_id: user_id,
+    is_admin: is_admin
   };
 };
 var CHANGE_USER_INFORMATION = 'CHANGE_USER_INFORMATION';
@@ -2101,7 +2126,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function App(_ref) {
-  var isConnected = _ref.isConnected;
+  var isConnected = _ref.isConnected,
+      is_admin = _ref.is_admin;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
     className: "App",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("header", {
@@ -2127,7 +2153,11 @@ function App(_ref) {
           exact: true,
           path: "/user",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_containers_ProfileForm__WEBPACK_IMPORTED_MODULE_4__.default, {})
-        })]
+        }), is_admin === 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
+          exact: true,
+          path: "/amin",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_containers_Dashboard__WEBPACK_IMPORTED_MODULE_3__.default, {})
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {})]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_NoMatch__WEBPACK_IMPORTED_MODULE_5__.default, {})
       })]
@@ -2261,7 +2291,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Eyes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Eyes */ "./resources/js/create-react-app-start/src/components/Eyes/index.js");
 /* harmony import */ var _Utils_svgAction__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Utils/svgAction */ "./resources/js/create-react-app-start/src/Utils/svgAction.js");
 /* harmony import */ var _Utils_passwordTest__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Utils/passwordTest */ "./resources/js/create-react-app-start/src/Utils/passwordTest.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./resources/js/create-react-app-start/node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Utils_PasswordVisibility__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Utils/PasswordVisibility */ "./resources/js/create-react-app-start/src/Utils/PasswordVisibility.js");
+/* harmony import */ var _assets_img_show_password_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../assets/img/show-password.png */ "./resources/js/create-react-app-start/src/assets/img/show-password.png");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./resources/js/create-react-app-start/node_modules/react/jsx-runtime.js");
+
+
 
 
 
@@ -2292,20 +2326,24 @@ var LoginForm = function LoginForm(_ref) {
     (0,_Utils_passwordTest__WEBPACK_IMPORTED_MODULE_4__.PasswordTest)(e.target.value);
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("form", {
+  var visiblePassword = function visiblePassword() {
+    (0,_Utils_PasswordVisibility__WEBPACK_IMPORTED_MODULE_5__.PasswordVisibility)();
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("form", {
       onSubmit: connect,
       className: "loginform",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Eyes__WEBPACK_IMPORTED_MODULE_2__.default, {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("label", {
-        children: ["email", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Eyes__WEBPACK_IMPORTED_MODULE_2__.default, {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("label", {
+        children: ["email", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
           type: "email",
           name: "email",
           placeholder: "your email adress"
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("label", {
-        children: ["password", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("label", {
+        children: ["password", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
           type: "password",
           name: "password",
           placeholder: "your password",
@@ -2313,17 +2351,22 @@ var LoginForm = function LoginForm(_ref) {
           onFocus: focusPass,
           onBlur: blurPass,
           onChange: passwordTestChange
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
+          src: _assets_img_show_password_png__WEBPACK_IMPORTED_MODULE_6__.default,
+          alt: "password-logo",
+          className: "passwordLogo",
+          onClick: visiblePassword
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
           id: "errorPassword"
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
         type: "submit",
         children: "Connexion"
       })]
-    }), error !== '' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    }), error !== '' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
       className: "error",
       children: error
-    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {})]
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {})]
   });
 };
 
@@ -2355,7 +2398,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var Navbar = function Navbar(_ref) {
   var isConnected = _ref.isConnected,
-      logout = _ref.logout;
+      logout = _ref.logout,
+      is_admin = _ref.is_admin;
 
   var logOut = function logOut() {
     logout();
@@ -2392,6 +2436,13 @@ var Navbar = function Navbar(_ref) {
           onClick: logOut,
           children: "Logout"
         })
+      }), is_admin === 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+          to: "/admin",
+          children: "Administration"
+        })
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+        children: " "
       })]
     })
   });
@@ -2574,7 +2625,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    isConnected: state.isConnected
+    isConnected: state.isConnected,
+    is_admin: state.is_admin
   };
 };
 
@@ -2670,7 +2722,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    isConnected: state.isConnected
+    isConnected: state.isConnected,
+    is_admin: state.is_admin
   };
 };
 
@@ -2805,7 +2858,7 @@ var ajax = function ajax(store) {
               baseURL: 'http://127.0.0.1:8000/api/'
             }).then(function (response) {
               localStorage.setItem('myToken', response.data.token);
-              store.dispatch((0,_actions__WEBPACK_IMPORTED_MODULE_1__.saveUser)(response.data.user.name, response.data.user.email, response.data.token, response.data.user.id));
+              store.dispatch((0,_actions__WEBPACK_IMPORTED_MODULE_1__.saveUser)(response.data.user.name, response.data.user.email, response.data.token, response.data.user.id, response.data.user.is_admin));
             })["catch"](function (error) {
               store.dispatch((0,_actions__WEBPACK_IMPORTED_MODULE_1__.errorMessage)(error.response.data.message));
             });
@@ -2911,7 +2964,8 @@ var initialState = {
   name: '',
   token: [],
   user_id: '',
-  error: ''
+  error: '',
+  is_admin: ''
 };
 
 var reducer = function reducer() {
@@ -2925,7 +2979,8 @@ var reducer = function reducer() {
         name: action.name,
         email: action.email,
         token: action.token,
-        user_id: action.user_id
+        user_id: action.user_id,
+        is_admin: action.is_admin
       });
 
     case _actions__WEBPACK_IMPORTED_MODULE_0__.CHANGE_VALUE:
@@ -7487,7 +7542,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".loginform {\n  display: flex;\n  flex-direction: column;\n  margin: 150px auto;\n  padding: 0 0 4rem;\n  border: 2px solid black;\n  border-radius: 20px;\n  box-shadow: -15px -10px 15px -4px black;\n}\n.loginform > div {\n  background: transparent;\n  width: 100%;\n  height: 50px;\n  border-radius: 20px 20px 0 0;\n  border-bottom: 1px solid black;\n  box-shadow: 0px 7px 10px 0px black;\n  padding-top: 1rem;\n}\n\nlabel {\n  display: flex;\n  flex-direction: column;\n  margin: 1rem 1rem;\n  text-align: center;\n  position: relative;\n}\n\ninput {\n  border-bottom: 1px solid black;\n}\n\n.error {\n  text-align: center;\n  color: red;\n  font-weight: bold;\n}\n\nbutton {\n  height: 70px;\n  position: relative;\n  bottom: -63px;\n  border-radius: 0 0 20px 20px;\n  background: bisque;\n  cursor: pointer;\n}\nbutton:hover {\n  color: bisque;\n  font-weight: bold;\n  background: white;\n  box-shadow: 0px 0px 0px 6px bisque;\n}\n\ninput[type=password] {\n  color: red;\n}\n\n#errorPassword {\n  position: absolute;\n  bottom: -50px;\n  width: 175px;\n  font-size: 0.5rem;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".loginform {\n  display: flex;\n  flex-direction: column;\n  margin: 150px auto;\n  padding: 0 0 4rem;\n  border: 2px solid black;\n  border-radius: 20px;\n  box-shadow: -15px -10px 15px -4px black;\n}\n.loginform > div {\n  background: transparent;\n  width: 100%;\n  height: 50px;\n  border-radius: 20px 20px 0 0;\n  border-bottom: 1px solid black;\n  box-shadow: 0px 7px 10px 0px black;\n  padding-top: 1rem;\n}\n\nlabel {\n  display: flex;\n  flex-direction: column;\n  margin: 1rem 1rem;\n  text-align: center;\n  position: relative;\n}\n\ninput {\n  border-bottom: 1px solid black;\n}\n\n.error {\n  text-align: center;\n  color: red;\n  font-weight: bold;\n}\n\nbutton {\n  height: 70px;\n  position: relative;\n  bottom: -63px;\n  border-radius: 0 0 20px 20px;\n  background: bisque;\n  cursor: pointer;\n}\nbutton:hover {\n  color: bisque;\n  font-weight: bold;\n  background: white;\n  box-shadow: 0px 0px 0px 6px bisque;\n}\n\ninput[type=password] {\n  color: red;\n}\n\n#errorPassword {\n  position: absolute;\n  bottom: -50px;\n  width: 175px;\n  font-size: 0.5rem;\n}\n\n.passwordLogo {\n  width: 10%;\n  position: absolute;\n  top: 25px;\n  right: 0;\n  cursor: pointer;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -7639,6 +7694,21 @@ module.exports = function (cssWithMappingToString) {
 
   return list;
 };
+
+/***/ }),
+
+/***/ "./resources/js/create-react-app-start/src/assets/img/show-password.png":
+/*!******************************************************************************!*\
+  !*** ./resources/js/create-react-app-start/src/assets/img/show-password.png ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/show-password.png?bdcb9068b1df140ff9677dbefb858396");
 
 /***/ }),
 

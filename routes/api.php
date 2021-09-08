@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthApiController;
-
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -27,3 +27,5 @@ Route::get('/user', [AuthApiController::class, 'show'])->middleware('auth')->nam
 Route::get('/{id}/edit', [AuthApiController::class, 'edit'])->middleware('auth')->name('edit');
 Route::put('/user/{id}', [AuthApiController::class, 'update'])->middleware('auth')->name('update');
 Route::get('/dashboard', [AuthApiController::class, 'dashboard'])->middleware('auth')->name('dashboard');
+Route::get('/user/list', [UserController::class, 'index'])->middleware('auth')->name('list');
+Route::delete('/user/{id}', [UserController::class, 'destroy'])->middleware('auth')->name('delete');

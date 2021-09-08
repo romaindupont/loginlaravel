@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+      return User::all();
     }
 
     /**
@@ -80,6 +80,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $user = User::find($id);
+      $user->delete();
+
+      $response = ["message" => "User is deleting"];
+        return response($response, 204);
     }
 }

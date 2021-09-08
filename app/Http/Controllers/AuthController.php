@@ -59,7 +59,6 @@ class AuthController extends Controller
                 ]
                 );
             }
-
         }
         else {
             return Redirect::back()->withErrors(
@@ -68,7 +67,6 @@ class AuthController extends Controller
                 ]
                 );
         }
-
     }
     public function logout()
     {
@@ -107,7 +105,6 @@ class AuthController extends Controller
             'email' => $user['email'],
             'password' => Hash::make($user['password'])
         ]);
-
 
         return redirect()->route('dashboard')
             ->with('success','User updated successfully');

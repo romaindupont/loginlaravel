@@ -29,3 +29,4 @@ Route::put('/user/{id}', [AuthApiController::class, 'update'])->middleware('auth
 Route::get('/dashboard', [AuthApiController::class, 'dashboard'])->middleware('auth')->name('dashboard');
 Route::get('/user/list', [UserController::class, 'index'])->middleware('auth')->name('list');
 Route::delete('/user/{id}', [UserController::class, 'destroy'])->middleware('auth')->name('delete');
+Route::patch('/user/{id}', [UserController::class, 'update'])->middleware('auth')->name('updateUser');

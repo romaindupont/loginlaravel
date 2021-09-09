@@ -2034,7 +2034,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "DB_DELETE_USER": () => (/* binding */ DB_DELETE_USER),
 /* harmony export */   "dbDeleteUser": () => (/* binding */ dbDeleteUser),
 /* harmony export */   "DELETE_USER": () => (/* binding */ DELETE_USER),
-/* harmony export */   "deleteUser": () => (/* binding */ deleteUser)
+/* harmony export */   "deleteUser": () => (/* binding */ deleteUser),
+/* harmony export */   "CHANGE_DB_STATUS": () => (/* binding */ CHANGE_DB_STATUS),
+/* harmony export */   "changeDbStatus": () => (/* binding */ changeDbStatus),
+/* harmony export */   "CHANGE_STATUS": () => (/* binding */ CHANGE_STATUS),
+/* harmony export */   "changeStatus": () => (/* binding */ changeStatus)
 /* harmony export */ });
 var CONNEXION = 'CONNEXION';
 var connexion = function connexion(email, password) {
@@ -2132,6 +2136,24 @@ var deleteUser = function deleteUser(user_id) {
   return {
     type: DELETE_USER,
     user_id: user_id
+  };
+};
+var CHANGE_DB_STATUS = 'CHANGE_DB_STATUS';
+var changeDbStatus = function changeDbStatus(user_id, is_admin) {
+  return {
+    type: CHANGE_DB_STATUS,
+    user_id: user_id,
+    is_admin: is_admin
+  };
+};
+var CHANGE_STATUS = 'CHANGE_STATUS';
+var changeStatus = function changeStatus(user_id, is_admin, email, name) {
+  return {
+    type: CHANGE_STATUS,
+    user_id: user_id,
+    is_admin: is_admin,
+    email: email,
+    name: name
   };
 };
 
@@ -2232,10 +2254,19 @@ var Admin = function Admin(_ref) {
       wait = _ref.wait,
       saveUserId = _ref.saveUserId,
       user_id = _ref.user_id,
-      dbDeleteUser = _ref.dbDeleteUser;
+      dbDeleteUser = _ref.dbDeleteUser,
+      changeDbStatus = _ref.changeDbStatus;
 
   var deleteUser = function deleteUser() {
     dbDeleteUser(user_id);
+  };
+
+  var changeStatusUser = function changeStatusUser() {
+    changeDbStatus(user_id, 1);
+  };
+
+  var changeStatusAdmin = function changeStatusAdmin() {
+    changeDbStatus(user_id, 0);
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
@@ -2254,7 +2285,12 @@ var Admin = function Admin(_ref) {
         children: "Delete"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
         className: "adminButton",
+        onClick: changeStatusUser,
         children: "Change to admin"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+        className: "adminButton",
+        onClick: changeStatusAdmin,
+        children: "Change to user"
       })]
     })]
   });
@@ -2836,6 +2872,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
     },
     dbDeleteUser: function dbDeleteUser(user_id) {
       dispatch((0,_actions__WEBPACK_IMPORTED_MODULE_2__.dbDeleteUser)(user_id));
+    },
+    changeDbStatus: function changeDbStatus(user_id, status) {
+      dispatch((0,_actions__WEBPACK_IMPORTED_MODULE_2__.changeDbStatus)(user_id, status));
     }
   };
 };
@@ -3205,6 +3244,25 @@ var ajax = function ajax(store) {
             break;
           }
 
+        case _actions__WEBPACK_IMPORTED_MODULE_1__.CHANGE_DB_STATUS:
+          {
+            var _token4 = localStorage.getItem('myToken');
+
+            axios__WEBPACK_IMPORTED_MODULE_0___default().patch("/user/".concat(action.user_id), {
+              is_admin: action.is_admin
+            }, {
+              baseURL: 'http://127.0.0.1:8000/api/',
+              headers: {
+                Authorization: "bearer ".concat(localStorage.getItem(_token4))
+              }
+            }).then(function (response) {
+              store.dispatch((0,_actions__WEBPACK_IMPORTED_MODULE_1__.changeStatus)(response.data.id, response.data.is_admin, response.data.email, response.data.name));
+            })["catch"](function (error) {
+              console.error('error');
+            });
+            break;
+          }
+
         default:
           next(action);
       }
@@ -3290,6 +3348,22 @@ var reducer = function reducer() {
       return _objectSpread(_objectSpread({}, state), {}, {
         userList: state.userList.filter(function (user) {
           return action.user_id != user.id;
+        })
+      });
+
+    case _actions__WEBPACK_IMPORTED_MODULE_0__.CHANGE_STATUS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        userList: state.userList.map(function (user) {
+          if (user.id === action.user_id) {
+            return {
+              is_admin: action.is_admin,
+              id: action.user_id,
+              email: user.email,
+              name: user.name
+            };
+          } else {
+            return user;
+          }
         })
       });
 

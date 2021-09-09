@@ -30,7 +30,7 @@ class AuthApiController extends Controller
             'email' => $dataUser['email'],
             'password' => Hash::make($dataUser['password']),
         ]);
-        return response(['message' => 'Inscription valide'], 204);
+        return response(['message' => 'Inscription valide'], 201);
     }
     public function login()
     {
@@ -84,7 +84,7 @@ class AuthApiController extends Controller
     public function show()
     {
         $user = Auth::user();
-        return view('changeInformation',compact('user'));
+        return view('changeInformation', compact('user'));
     }
     public function edit($id)
     {
@@ -105,12 +105,11 @@ class AuthApiController extends Controller
                 'password' => Hash::make($user['password'])
             ]);
             $response = ["message" => "Update ok"];
-            return response($response, 204);
+            return response($response, 200);
         }
         else {
             $response = ["message" => "Not OK"];
             return response($response, 400);
         }
-
     }
 }

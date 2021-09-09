@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 
+
 class UserController extends Controller
 {
     /**
@@ -69,8 +70,22 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $user = $request->validate([
+        'is_admin' => 'required|integer'
+    ]);
+    if ($user) {
+        User::whereId($id)->update([
+            'is_admin' => $user['is_admin'],
+        ]);
+        $response = ["message" => "Update ok"];
+        $userChange = User::where('id', $id)->first();
+        return response($userChange, 200);
     }
+    else {
+      $response = ["message" => "Update No ok"];
+        return response($response, 500);
+    }
+  }
 
     /**
      * Remove the specified resource from storage.
@@ -84,6 +99,6 @@ class UserController extends Controller
       $user->delete();
 
       $response = ["message" => "User is deleting"];
-        return response($response, 204);
+        return response($response, 200);
     }
 }
